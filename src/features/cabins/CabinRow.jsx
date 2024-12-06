@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { formatCurrency } from "../../utils/helpers";
+import Button from "../../ui/Button";
 
 const TableRow = styled.div`
   display: grid;
@@ -23,7 +24,7 @@ function CabinRow({ cabin }) {
       <div>{formatCurrency(regularPrice)}</div>
       <div>{formatCurrency(discount)}</div>
 
-      <button>Delete</button>
+      <Button>Delete</Button>
     </TableRow>
   );
 }
