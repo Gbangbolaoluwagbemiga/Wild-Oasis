@@ -28,7 +28,7 @@ function CreateCabinForm() {
   });
 
   function onSubmit(data) {
-    mutate(data);
+    console.log(data);
   }
 
   function onError(errors) {
@@ -113,14 +113,13 @@ function CreateCabinForm() {
         <FileInput
           id="image"
           accept="image/*"
-          // {...register("image", {
-          //   required: "This field is required",
-          // })}
+          {...register("image", {
+            required: "This field is required",
+          })}
         />
       </FormRow>
 
       <FormRow>
-        {/* type is an HTML attribute! */}
         <Button variation="secondary" type="reset">
           Cancel
         </Button>
