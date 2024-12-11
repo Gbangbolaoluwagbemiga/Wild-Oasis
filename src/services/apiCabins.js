@@ -10,17 +10,7 @@ export async function getCabins() {
   return data;
 }
 
-export async function deleteCabins(id) {
-  const { data, error } = await supabase.from("Cabin").delete().eq("id", id);
-
-  if (error) {
-    console.error(error);
-    throw new Error("cabins could not be loaded");
-  }
-  return data;
-}
-
-export async function createCabin(newCabin) {
+export async function createEditCabin(newCabin, id) {
   const imageName = `${Math.random()}-${newCabin.image.name}`.replaceAll(
     "/",
     ""
@@ -30,7 +20,8 @@ export async function createCabin(newCabin) {
   const { data, error } = await supabase
     .from("Cabin")
     .insert([{ ...newCabin, image: imagePath }])
-    .select();
+    .select()
+    .single();
 
   if (error) {
     console.error(error);
@@ -45,5 +36,15 @@ export async function createCabin(newCabin) {
     await supabase.from("Cabin").delete().eq("id", data.id);
   }
 
+  return data;
+}
+
+export async function deleteCabins(id) {
+  const { data, error } = await supabase.from("Cabin").delete().eq("id", id);
+
+  if (error) {
+    console.error(error);
+    throw new Error("cabins could not be loaded");
+  }
   return data;
 }
