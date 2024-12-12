@@ -10,6 +10,7 @@ import FormRow from "../../ui/FormRow";
 
 import { useForm } from "react-hook-form";
 import { createEditCabin } from "../../services/apiCabins";
+import createNewCabin from "./createCabin";
 
 function CreateCabinForm({ cabinToEdit = {} }) {
   const { id: editId, ...editValues } = cabinToEdit;
@@ -22,15 +23,17 @@ function CreateCabinForm({ cabinToEdit = {} }) {
 
   const queryClient = useQueryClient();
 
-  const { mutate: createCabin, isLoading: isCreating } = useMutation({
-    mutationFn: createEditCabin,
-    onSuccess: () => {
-      toast.success("New cabin successfully created");
-      queryClient.invalidateQueries({ queryKey: ["cabins"] });
-      reset();
-    },
-    onError: (err) => toast.error(err.message),
-  });
+  // const { mutate: createCabin, isLoading: isCreating } = useMutation({
+  //   mutationFn: createEditCabin,
+  //   onSuccess: () => {
+  //     toast.success("New cabin successfully created");
+  //     queryClient.invalidateQueries({ queryKey: ["cabins"] });
+  //     reset();
+  //   },
+  //   onError: (err) => toast.error(err.message),
+  // });
+
+  const { createCabin, isCreating } = createNewCabin();
 
   const { mutate: editCabin, isLoading: isEditing } = useMutation({
     mutationFn: ({ newcabinData, id }) => createEditCabin(newcabinData, id),
