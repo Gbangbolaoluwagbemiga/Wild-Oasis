@@ -10,7 +10,7 @@ import FormRow from "../../ui/FormRow";
 
 import { useForm } from "react-hook-form";
 import { createEditCabin } from "../../services/apiCabins";
-import createNewCabin from "./createCabin";
+import useCreateCabin from "./useCreateCabin";
 
 function CreateCabinForm({ cabinToEdit = {} }) {
   const { id: editId, ...editValues } = cabinToEdit;
@@ -33,7 +33,7 @@ function CreateCabinForm({ cabinToEdit = {} }) {
   //   onError: (err) => toast.error(err.message),
   // });
 
-  const { createCabin, isCreating } = createNewCabin();
+  const { createCabin, isCreating } = useCreateCabin();
 
   const { mutate: editCabin, isLoading: isEditing } = useMutation({
     mutationFn: ({ newcabinData, id }) => createEditCabin(newcabinData, id),
