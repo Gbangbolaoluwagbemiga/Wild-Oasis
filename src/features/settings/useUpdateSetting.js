@@ -6,10 +6,10 @@ function useUpdateSetting() {
   const queryClient = useQueryClient();
 
   const { mutate: updateSetting, isLoading: isUpdating } = useMutation({
-    mutationFn: ({ newcabinData, id }) => upadteSettingApi(newcabinData, id),
+    mutationFn: upadteSettingApi,
     onSuccess: () => {
       toast.success("setting has been edited");
-      queryClient.invalidateQueries({ queryKey: ["cabins"] });
+      queryClient.invalidateQueries({ queryKey: ["setting"] });
     },
     onError: (err) => toast.error(err.message),
   });

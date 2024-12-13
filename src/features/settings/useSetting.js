@@ -7,7 +7,7 @@ function useSetting() {
     error,
     data: settingsData,
   } = useQuery({
-    queryKey: ["settings"],
+    queryKey: ["setting"],
     queryFn: getSettings,
   });
 
