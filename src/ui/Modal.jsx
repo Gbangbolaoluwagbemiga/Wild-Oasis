@@ -1,3 +1,4 @@
+import { HiMiniXCircle } from "react-icons/hi2";
 import styled from "styled-components";
 
 const StyledModal = styled.div`
@@ -49,8 +50,15 @@ const Button = styled.button`
   }
 `;
 
-function Modal() {
-  return <StyledModal>Modal</StyledModal>;
+function Modal({ children, closeModal }) {
+  return (
+    <Overlay>
+      <StyledModal>{children}</StyledModal>
+      <Button>
+        <HiMiniXCircle onClick={() => closeModal(false)} />
+      </Button>
+    </Overlay>
+  );
 }
 
 export default Modal;
