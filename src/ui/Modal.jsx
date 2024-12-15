@@ -1,3 +1,4 @@
+import { createPortal } from "react-dom";
 import { HiMiniXCircle } from "react-icons/hi2";
 import styled from "styled-components";
 
@@ -51,7 +52,7 @@ const Button = styled.button`
 `;
 
 function Modal({ children, closeModal }) {
-  return (
+  return createPortal(
     <Overlay>
       <StyledModal>
         <Button>
@@ -59,7 +60,8 @@ function Modal({ children, closeModal }) {
         </Button>
         {children}
       </StyledModal>
-    </Overlay>
+    </Overlay>,
+    document.body
   );
 }
 
