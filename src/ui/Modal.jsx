@@ -53,10 +53,12 @@ const Button = styled.button`
 function Modal({ children, closeModal }) {
   return (
     <Overlay>
-      <StyledModal>{children}</StyledModal>
-      <Button>
-        <HiMiniXCircle onClick={() => closeModal(false)} />
-      </Button>
+      <StyledModal>
+        <Button>
+          <HiMiniXCircle onClick={() => closeModal(false)} />
+        </Button>
+        {children}
+      </StyledModal>
     </Overlay>
   );
 }
