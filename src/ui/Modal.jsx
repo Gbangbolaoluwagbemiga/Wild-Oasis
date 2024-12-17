@@ -82,8 +82,7 @@ function Open({ children, opens: openModal }) {
 
 function Window({ children, name }) {
   const { openModal, close } = useContext(ModalContext);
-  const ref = useRef();
-  useCloseModal(ref, close);
+  const ref = useCloseModal(close);
 
   if (name !== openModal) return null;
 

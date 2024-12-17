@@ -1,6 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
-function useCloseModal(ref, close) {
+function useCloseModal(close) {
+  const ref = useRef();
+
   useEffect(
     function () {
       function handleClick(e) {
@@ -12,6 +14,7 @@ function useCloseModal(ref, close) {
     },
     [close]
   );
+  return ref;
 }
 
 export default useCloseModal;
