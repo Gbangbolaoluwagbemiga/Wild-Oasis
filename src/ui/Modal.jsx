@@ -1,3 +1,4 @@
+import { cloneElement, createContext, useContext, useState } from "react";
 import { createPortal } from "react-dom";
 import { HiMiniXCircle } from "react-icons/hi2";
 import styled from "styled-components";
@@ -51,18 +52,45 @@ const Button = styled.button`
   }
 `;
 
-function Modal({ children, closeModal }) {
+const ModalContext = createContext();
+
+function Modal({ children }) {
+  const [openModal, setIsOpenModal] = useState("");
+
+  const open = setIsOpenModal;
+  const close = () => setIsOpenModal("");
+
+  return (
+    <ModalContext.Provider value={{ open, close, openModal }}>
+      {children}
+    </ModalContext.Provider>
+  );
+}
+
+function Open({ children, opens: openModal }) {
+  const { open } = useContext(ModalContext);
+
+  return cloneElement(children, { onClick: () => open(openModal) });
+}
+
+function Window({ children, name }) {
+  const { openModal, close } = useContext(ModalContext);
+
+  if (name !== openModal) return null;
+
   return createPortal(
     <Overlay>
       <StyledModal>
-        <Button>
-          <HiMiniXCircle onClick={() => closeModal(false)} />
+        <Button onClick={() => close()}>
+          <HiMiniXCircle />
         </Button>
-        {children}
+        <div>{cloneElement(children, { closeModal: close })}</div>
       </StyledModal>
     </Overlay>,
     document.body
   );
 }
 
+Modal.Window = Window;
+Modal.Open = Open;
 export default Modal;
