@@ -49,9 +49,9 @@ function CreateCabinForm({ cabinToEdit = {}, closeModal }) {
     }
   }
 
-  // function onError(errors) {
-  //   // console.log(errors);
-  // }
+  function onError(errors) {
+    // console.log(errors);
+  }
 
   return (
     <Form
