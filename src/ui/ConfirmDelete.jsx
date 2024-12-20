@@ -21,7 +21,7 @@ const StyledConfirmDelete = styled.div`
 `;
 
 function ConfirmDelete({ resource, onConfirm, disabled, closeModal }) {
-  function handleConfirmClick() {}
+  // function handleConfirmClick() {}
 
   return (
     <StyledConfirmDelete>
@@ -35,11 +35,7 @@ function ConfirmDelete({ resource, onConfirm, disabled, closeModal }) {
         <Button variation="secondary" onClick={closeModal}>
           Cancel
         </Button>
-        <Button
-          variation="danger"
-          onClick={handleConfirmClick}
-          disabled={disabled}
-        >
+        <Button variation="danger" onClick={onConfirm} disabled={disabled}>
           Delete
         </Button>
       </div>
