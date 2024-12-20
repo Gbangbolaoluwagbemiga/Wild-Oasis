@@ -5,23 +5,25 @@ import CabinTable from "../../features/cabins/CabinTable";
 
 function AddCabin() {
   return (
-    <Modal>
-      <Modal.Open opens="cabin-forms">
-        <Button>Add New Cabin</Button>
-      </Modal.Open>
+    <div>
+      <Modal>
+        <Modal.Open opens="cabin-forms">
+          <Button>Add New Cabin</Button>
+        </Modal.Open>
 
-      <Modal.Window name="cabin-forms">
-        <CreateCabinForm />
-      </Modal.Window>
+        <Modal.Window name="cabin-forms">
+          <CreateCabinForm />
+        </Modal.Window>
 
-      <Modal.Open opens="table">
-        <Button>Display Table</Button>
-      </Modal.Open>
+        {/* <Modal.Open opens="table">
+          <Button>Display Table</Button>
+        </Modal.Open>
 
-      <Modal.Window name="table">
-        <CabinTable />
-      </Modal.Window>
-    </Modal>
+        <Modal.Window name="table">
+          <CabinTable />
+        </Modal.Window> */}
+      </Modal>
+    </div>
   );
 }
 
