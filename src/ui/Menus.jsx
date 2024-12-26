@@ -69,7 +69,7 @@ const MenusContext = createContext();
 
 function Menus({ children }) {
   const [openId, setOpen] = useState("");
-  const close = setOpen("");
+  const close = () => setOpen("");
   const open = setOpen;
   return (
     <MenusContext.Provider value={{ openId, close, open }}>
@@ -79,7 +79,7 @@ function Menus({ children }) {
 }
 
 function Toggle({ id }) {
-  const [open, close, openId] = useContext(MenusContext);
+  const { open, close, openId } = useContext(MenusContext);
 
   function handleClick() {
     openId === "" || id !== openId ? open(id) : close();
@@ -91,7 +91,7 @@ function Toggle({ id }) {
   );
 }
 function List({ id, children }) {
-  const [openId] = useContext(MenusContext);
+  const { openId } = useContext(MenusContext);
 
   if (openId !== id) return null;
 
