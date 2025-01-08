@@ -67,7 +67,7 @@ const StyledButton = styled.button`
 
 const MenusContext = createContext();
 
-function Menus({ children }) {
+function Menus({ childre }) {
   const [openId, setOpen] = useState("");
   const close = () => setOpen("");
   const open = setOpen;
