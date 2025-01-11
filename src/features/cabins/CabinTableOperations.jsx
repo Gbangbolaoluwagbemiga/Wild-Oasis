@@ -5,17 +5,16 @@ import Filter from "../../ui/Filter";
 function CabinTableOperations() {
   return (
     <TableOperations>
-      <Filter />
-      {/* <Filter
-        filterField='discount'
+      <Filter
+        filteredField="discount"
         options={[
-          { value: 'all', label: 'All' },
-          { value: 'no-discount', label: 'No discount' },
-          { value: 'with-discount', label: 'With discount' },
+          { value: "all", label: "All" },
+          { value: "no-discount", label: "No discount" },
+          { value: "with-discount", label: "With discount" },
         ]}
       />
 
-      <SortBy
+      {/* <SortBy
         options={[
           { value: 'name-asc', label: 'Sort by name (A-Z)' },
           { value: 'name-desc', label: 'Sort by name (Z-A)' },
@@ -30,7 +29,7 @@ function CabinTableOperations() {
             label: 'Sort by capacity (high first)',
           },
         ]}
-      /> */}
+      />  */}
     </TableOperations>
   );
 }
